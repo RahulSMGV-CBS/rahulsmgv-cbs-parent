@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- ========================================================= -->
+    <!-- Project Coordinates                                       -->
+    <!-- ========================================================= -->
+
+    <groupId>com.rahulsmgv.cbs</groupId>
+    <artifactId>rahulsmgv-cbs-parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>RahulSMGV Core Banking System Parent</name>
+    <description>Enterprise Parent Maven Project for RahulSMGV CBS</description>
+
+    <!-- ========================================================= -->
+    <!-- Global Properties                                         -->
+    <!-- ========================================================= -->
+
+    <properties>
+
+        <!-- Java -->
+        <java.version>21</java.version>
+
+        <!-- Encoding -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- Compiler -->
+        <maven.compiler.release>${java.version}</maven.compiler.release>
+
+        <!-- Spring -->
+        <spring-boot.version>3.5.4</spring-boot.version>
+        <spring-cloud.version>2025.0.0</spring-cloud.version>
+
+        <!-- Maven Plugins -->
+        <maven.compiler.plugin.version>3.14.0</maven.compiler.plugin.version>
+        <surefire.version>3.5.3</surefire.version>
+        <failsafe.version>3.5.3</failsafe.version>
+        <jacoco.version>0.8.13</jacoco.version>
+        <spotless.version>2.44.4</spotless.version>
+        <checkstyle.version>10.26.1</checkstyle.version>
+
+        <!-- Libraries -->
+        <mapstruct.version>1.6.3</mapstruct.version>
+        <lombok.version>1.18.38</lombok.version>
+        <flyway.version>11.11.2</flyway.version>
+        <postgres.version>42.7.7</postgres.version>
+        <testcontainers.version>1.21.3</testcontainers.version>
+
+    </properties>
+
+    <!-- ========================================================= -->
+    <!-- Dependency Management                                     -->
+    <!-- ========================================================= -->
+
+    <dependencyManagement>
+
+        <dependencies>
+
+            <!-- Spring Boot BOM -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Spring Cloud BOM -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+        </dependencies>
+
+    </dependencyManagement>
+
+    <!-- ========================================================= -->
+    <!-- Plugin Management                                         -->
+    <!-- ========================================================= -->
+
+    <build>
+
+        <pluginManagement>
+
+            <plugins>
+
+                <!-- Compiler -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven.compiler.plugin.version}</version>
+                    <configuration>
+                        <release>${java.version}</release>
+                    </configuration>
+                </plugin>
+
+                <!-- Unit Tests -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${surefire.version}</version>
+                </plugin>
+
+                <!-- Integration Tests -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>${failsafe.version}</version>
+                </plugin>
+
+                <!-- Code Coverage -->
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>${jacoco.version}</version>
+                </plugin>
+
+                <!-- Formatting -->
+                <plugin>
+                    <groupId>com.diffplug.spotless</groupId>
+                    <artifactId>spotless-maven-plugin</artifactId>
+                    <version>${spotless.version}</version>
+                </plugin>
+
+                <!-- Code Quality -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>${checkstyle.version}</version>
+                </plugin>
+
+                <!-- Spring Boot -->
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot.version}</version>
+                </plugin>
+
+            </plugins>
+
+        </pluginManagement>
+
+    </build>
+
+</project>
